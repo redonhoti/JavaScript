@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ora{
+            background: #13B818;
+            padding:20px;
+            margin:20px 0;
+            color:black;
+            display:block;
+            font:48px monospace;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var intervalID;
+        function shfaqkohen(){
+            var d=new Date();
+            document.getElementById("ora").innerHTML=d.toLocaleTimeString();
+        }
+        function ndalOren(){
+            clearInterval(intervalID);
+        }
+        intervalID=setInterval(shfaqkohen, 100);
+    </script>
+    <p>Ora aktuale ne kompjuterin tuaj eshte:<span id="ora"></span></p>
+    <button onclick="ndalOren();">Ndal oren</button>
+</body>
+</html>

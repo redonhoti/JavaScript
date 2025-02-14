@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setCookie(name,value,daysToLive){
+            var cookie=name+"="+encodeURIComponent(value);
+            if(typeof daysToLive ==="number"){
+                cookie+="; max-age="+(daysToLive*24*60*60);
+                document.cookie=cookie;
+            }
+        }
+        function getCookiew(name){
+            var cookieArr=document.cookie.split(";");
+
+            for(let i=0; i<cookieArr.length; i++){
+                var cookiePair=cookieArr[i].split("=");
+
+                if(name == cookiePair[0].trim()){
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+        function checkCookie(){
+            var Emri=getCookie("Emri");
+
+            if(Emri!=null){
+                alert("Welcome again,"+Emri);
+            }else{
+                Emri=prompt("Ju lutem shkruani emrin tuaj:");
+                if(Emri!=""&& Emri!=null){
+                    setCookie("Emri", Emri, 1);
+                }
+            }
+        }
+        window.onload=checkCookie;
+    </script>
+    <p><strong>Shenim:</strong>Tani nese shtypni butonin "Shfaq
+    daljen" ose rifreskoni faqen,do te shihni nje mesazh pershendetjeje,
+rreshtin e fundit te kodit JavaScript per te  ditur se si ta fshini
+kete cookie<b>firstName</b>.</p>
+</body>
+</html>

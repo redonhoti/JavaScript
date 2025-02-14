@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Rectangle{
+            constructor(length,width){
+                this.length=length;
+                this.width=width;
+            }
+            getArea(){
+                return this.length*this.width;
+            }
+        }
+        class Square extends Rectangle{
+            constructor(length){
+                super(length,length);
+            }
+            getPerimeter(){
+                return 2*(this.length+this.width);
+            }
+        }
+        let rectangle=new Rectangle(5,10);
+        document.write(rectangle.getArea());
+        document.write("<br>");
+
+        let square=new Square(5);
+        document.write(square.getArea());
+        document.write("<br>");
+        document.write(square.getPerimeter());
+        document.write("<br>");
+
+        document.write(square instanceof Square);
+        document.write("<br>");
+        document.write(square instanceof Rectangle);
+        document.write("<br>");
+        document.write(rectangle instanceof Square);
+    </script>
+</body>
+</html>

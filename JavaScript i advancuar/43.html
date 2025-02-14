@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num=prompt("Vendosni nje numer te plote pozitiv midis 0 dhe 100");
+
+        var start=Date.now();
+        try {
+            if(num > 0 && num <=100){
+                alert(Math.pow(num, num));
+            }else{
+                throw new Error("Eshte futur nje vlere e pavlefshme!");
+            }
+        }catch(e){
+         alert(e.message);
+        } finally {
+            alert("Execution took: "+(Date.now()-start)+"ms");
+        }
+            
+    </script>
+    <p><strong>Shenim:</strong>Metoda<code>Math.pow(baze,eksponent)</code>kthen nje numer qe perfaqeson bazen e dhene te marre 
+    ne fuqine e eksponentit te dhene<code>baze<sup>eksponent</sup></code>.</p>
+    </body>
+</html>

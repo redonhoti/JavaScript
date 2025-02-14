@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animacion me JavaScript</title>
+    <style>
+        /* Stili për elementin që do të animohet */
+        #animacioni {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div id="animacioni"></div>
+
+<script>
+    // Zbatimi i animacionit me JavaScript
+    var elementi = document.getElementById("animacioni");
+    var pozicioni = 0;
+    var drejtimi = 1;
+
+    function animacioni() {
+        // Lëvizja e elementit
+        pozicioni += drejtimi;
+        elementi.style.left = pozicioni + "px";
+
+        // Ndryshimi i drejtimin kur elementi arrin kufirin e djathtë ose të majtë të dritares
+        if (pozicioni >= window.innerWidth - 100 || pozicioni <= 0) {
+            drejtimi *= -1;
+        }
+    }
+
+    // Përdorimi i setInterval për të përditësuar animacionin çdo 10 milisekonda
+    setInterval(animacioni, 10);
+</script>
+
+</body>
+</html>

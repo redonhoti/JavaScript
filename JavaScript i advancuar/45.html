@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function squareRoot(number){
+            if(number<0){
+                throw new Error("Na vjen keq, nuk mund te llogaris rrenjen katrore te nje numri negativ");
+            }else {
+                return Math.sqrt(number);
+            }
+        }
+        try {
+            squareRoot(16);
+            squareRoot(625);
+            squareRoot(9);
+            squareRoot(100);
+
+            alert("Te gjitha llogaritjet u kryen me sukses."); 
+        }catch(e){
+            alert(e.message);
+        }
+
+    </script>
+</body>
+</html>

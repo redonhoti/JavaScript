@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printError(elemId, hintMsg){
+            document.getElementById(elemId).innerHTML=hintMsg;
+        }
+        function validateForm(){
+            var Emri=document.contactForm.emri.value;
+            var email=document.contactForm.email.value;
+            var Numriitelefonit=document.contactForm.numriitel.value;
+            var Shteti=document.contactForm.Shteti.value;
+            var Gjinia=document.contactForm.Gjinia.value;
+            var Hobi=[];
+            var checkboxes=document.getElementsByName("hobi[]");
+            for(var i=0; i<checkboxes.length; i++){
+                if(checkboxes[i].checked){
+                    hobi.push(checkboxes[i].value);
+                }
+            }
+            var emriErr=emailErr=numriitelErr=shtetiErr=gjiniaErr=true;
+            if(emri==""){
+                printError("emriErr","Ju lutem shkruani emrin tuaj");
+            }else{
+                var regex=/^[a-zA-Z\s]+$/;
+                if(regex.test(name)===false){
+                    printError("emriErr","Ju lutem shkruani nje emer te vlefshem");
+                }else{
+                    printError("emriErr","");
+                    emriErr=false;
+                }
+            }
+        }if(email==""){
+            printError("emailErr","Ju lutem shkruani email-in tuaj");
+        }else{
+            var regex=/^\S+@\S+\.\S+$/;
+            if(regex.test(email)===false){
+                printError("emailErr","Ju lutem shkruani nje email te vlefshme");
+            }else{
+                printError("emailErr","");
+                emailErr=false;
+            }
+        }
+        if(numriitel==""){
+            printError("numriitelErr","Ju lutem shkruani numrin tuaj te telefonit");
+        }else{
+            var regex=/^[1-9]\d{9}$/;
+            if(regex.test(numriitel)===false){
+                printError("numriitelErr","Ju lutem shkruani nje numer te vlefshme");
+            }else{
+                printError("numriitelErr","");
+                numriitel=false;
+            }
+        }
+        if(shteti=="Zgjedh"){
+                printError("shtetiErr","Ju lutem zgjedhni shtetin tuaj");
+            }else{
+                printError("shtetiErr","");
+                shtetiErr=false;
+            }
+            if(gjinia==""){
+                printError("gjiniaErr","Zgjedhni gjinine tuaj");
+            }else{
+                printError("gjiniaErr","");
+                gjiniaErr=false;
+            }
+        if((emriErr || emailErr || numriitelErr || shtetiErr || gjiniaErr)
+    ==true){
+return false;
+    }else{
+        var dataPreview="You've entered the following details: \n"+
+                        "Emri:"+emri+"\n"+
+                        "Email:"+email+"\n"+
+                        "Numri i tel:"+numriitel+"\n"+
+                        "Shteti:"+shteti+"\n"+
+                        "Gjinia:"+gjinia+"\n";
+    if(hobi.length){
+        dataPreview+="Hobi:"+hobi.join(", ");
+    }
+    alert(dataPreview);
+    }
+    </script>
+    </head>
+    <body>
+        <form>
+            <h2>Forme e Aplikacionit</h2>
+            <div class="row">
+                <label>Emri</label>
+                <input type="text " name="emri">
+                <div class="error"id="emriErr"></div>
+            </div><br>
+            <div class="row">
+                <label>Email</label>
+                <input type="text " name="email">
+                <div class="error"id="emailErr"></div>
+            </div><br>
+            <div class="row">
+                <label>Numriitel</label>
+                <input type="text " name="numriitel" maxlength="10">
+                <div class="error"id="numriitelErr"></div>
+            </div><br>
+            <div class="row">
+                <label>Shteti</label>
+                <select name="shteti">
+                    <option>Zgjedh</option>
+                    <option>Republika e Kosoves</option>
+                    <option>Shqiperi</option>
+                    <option>Gjermani</option>
+                    <option>Austri</option>
+                </select>
+                <div class="error"id="countryErr"></div>
+            </div><br>
+            <div class="row">
+                <label>Gjinia</label>
+                <div class="form-inline">
+                    <label><input type="radio" name="gender" value="male">Mashkull</label>
+                    <label><input type="radio" name="gender" value="female">Femer</label>
+                </div>
+                <div class="error"id="genderErr"></div>
+            </div><br>
+            <div class="row">
+                <label>Hobi<i>(Opsional)</i></label>
+                <div class="form-inline">
+                    <label><input type="checkbox" name="hobbies[]" value="sports">Sports</label>
+                    <label><input type="checkbox" name="hobbies[]" value="movies">Filma</label>
+                    <label><input type="checkbox" name="hobbies[]" value="music">Muzika</label>
+                </div>
+                </div><br>
+                <div class="row">
+                    <input type="submit"value="Kycu">
+                </div>
+        </form>
+</html>

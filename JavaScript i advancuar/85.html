@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Shembull i orës</title>
+<script>
+window.onload = function() {
+// Paraqitni orën 
+clock();
+
+// dhe pastaj riparaqitni orën dhe sekondat 
+setInterval(clock, 1000);
+};
+
+function clock() {
+// Merrni orën dhe datën aktuale 
+var a = new Date();
+var sec = a.getSeconds(); var min = a.getMinutes(); var hr = a.getHours();
+hr = hr >= 12 ? hr - 12 : hr;
+
+var ctx = document.getElementById('canvas').getContext('2d');
+
+ctx.save();
+ctx.clearRect(0,0,150,150);
+
+// Kur barazojmë me 0,0 ne në fakt tërheqim me 75,75
+ctx.translate(75,75);
+
+// Vizatimi i një linje 100 px në të vërtetë vizaton një vijë 40 px
+ctx.scale(0.4,0.4);
+ 
+
+// Filloni kursorin rrotullues nga ora 12 
+ctx.rotate(-Math.PI/2);
+
+// Inicializoni vetitë e vizatimit 
+ctx.strokeStyle = "black"; 
+ctx.fillStyle = "black"; 
+ctx.lineWidth = 8;
+ctx.lineCap = "round";
+
+// Shenjat e orës 
+ctx.save();
+ctx.beginPath();
+// Për çdo orë
+for ( var i = 0; i < 12; i++ ) {
+// Rrotullojeni në 1/12 e rrugës
+// (Mbani mend: Një rreth= 2*PI) 
+ctx.rotate(Math.PI/6);
+
+// Lëvizeni kursorin pran pjesës së jashtme 
+ctx.moveTo(100,0);
+
+// dhe vizatojeni një shenjë të shkurtër (20px) 
+ctx.lineTo(120,0);
+}
+ctx.stroke(); ctx.restore();
+
+// Shenjat e minutave 
+ctx.save();
+ctx.lineWidth = 5;
+ctx.beginPath();
+// Për çdo minutë
+for ( var i = 0; i < 60; i++ ) {
+// përveq minutave që janë ‘në orë’ 
+if ( i % 5 != 0 ) {
+// Lëvizeni kursorin më lartë 
+ctx.moveTo(117,0);
+
+// Dhe vizatojeni një vijë të shkurtër (3px) 
+ctx.lineTo(120,0);
+}
+ 
+ctx.rotate(Math.PI/30);
+}
+ctx.stroke(); 
+ctx.restore();
+
+// Vizatojeni orën e dorës 
+ctx.save();
+// Rrotullojeni orën në pozitën e duhur
+ctx.rotate( (Math.PI/6) * hr + (Math.PI/360) * min + (Math.PI/21600) * sec )
+
+ctx.lineWidth = 14;
+
+ctx.beginPath();
+// Filloni të vizatoni thjesht nga qendra (duke e bërë atë të duket si një akrep i orës)
+ctx.moveTo(-20,0);
+ctx.lineTo(80,0);
+ctx.stroke(); 
+ctx.restore();
+
+ctx.save();
+// Rrotullojeni orën në pozitën aktuale të minutave 
+ctx.rotate( (Math.PI/30) * min + (Math.PI/1800) * sec )
+
+// Kjo linjë do të jetë më e hollë se akrepi i orës
+ctx.lineWidth = 10;
+ctx.beginPath();
+ctx.moveTo(-28,0);
+ctx.lineTo(112,0);
+ctx.stroke(); 
+ctx.restore();
+
+ctx.save();
+ctx.rotate(sec * Math.PI/30);
+ 
+ctx.strokeStyle = "#D40000"; 
+ctx.fillStyle = "#D40000";
+
+ctx.lineWidth = 6;
+
+ctx.beginPath();
+ctx.moveTo(-30,0);
+ctx.lineTo(83,0);
+ctx.stroke(); 
+ctx.restore();
+ctx.save();
+// Kufiri do të jetë i gjerë 
+ctx.lineWidth = 14;
+
+// dhe i kaltër 
+ctx.strokeStyle = '#325FA2';
+
+ctx.beginPath();
+// Vizatojeni një rreth të jashtëm 142px
+ctx.arc(0,0,142,0,Math.PI*2,true);
+ctx.stroke(); 
+ctx.restore();
+ctx.restore();
+}
+</script>
+</head>
+<body>
+<canvas id="canvas" height="150" width="150"></canvas>
+</body>
+</html>

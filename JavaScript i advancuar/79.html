@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulari i Vlerësimit</title>
+</head>
+<body>
+<h2>Vlerësimi i Faqes</h2>
+<form id="vleresimiForm">
+  <label for="vleresimi">Zgjidhni vlerën tuaj për faqen:</label><br>
+  <input type="radio" id="vleresimi1" name="vleresimi" value="1">
+  <label for="vleresimi1">1 (Shumë i dobët)</label><br>
+  <input type="radio" id="vleresimi2" name="vleresimi" value="2">
+  <label for="vleresimi2">2 (Dobët)</label><br>
+  <input type="radio" id="vleresimi3" name="vleresimi" value="3">
+  <label for="vleresimi3">3 (Mesatar)</label><br>
+  <input type="radio" id="vleresimi4" name="vleresimi" value="4">
+  <label for="vleresimi4">4 (Mirë)</label><br>
+  <input type="radio" id="vleresimi5" name="vleresimi" value="5">
+  <label for="vleresimi5">5 (Shumë mirë)</label><br><br>
+  <button type="button" onclick="submitVleresimin()">Dërgo</button>
+</form>
+
+<p id="rezultati"></p>
+
+<script src="vleresimi.js"></script>
+</body>
+</html>
