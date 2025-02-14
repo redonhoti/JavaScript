@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shtimi ose heqja e elementeve nga grupi</title>
+</head>
+<body>
+    <script>
+        var ngjyra=["E kuqe","E gjelber","E kalter"];
+        var fshirja=ngjyra.splice(0,1);//Heqja e elementit te pare
+
+        document.write(ngjyra+ "<br>");// E gjelber, E kalter
+        document.write(fshirja+ "<br>");//E kuqe (nje element i vargut)
+        document.write(fshirja.length +"<br>");//1
+        fshirja=ngjyra.splice(1,0,"Vjollce","E verdhe");//Shtimi i dy elementeve nga pozicioni nje
+        document.write(ngjyra+ "<br>");//E gjelber,Vjolllce,E verdhe,E kalter
+        document.write(fshirja+ "<br>");//Varg i zbrazet
+        document.write(fshirja.length+ "<br>");//0
+        fshirja=ngjyra.splice(1,1, "Vjollce","E gjelber");//Shtimi i dy vlerave,heqja e nje vlere
+        document.write(ngjyra+"<br>");//E gjelber,Vjollce,E verdhe,E kalter
+        document.write(fshirja+"<br>");//Vjollce (nje element i vargut)
+        document.write(fshirja.length);//1
+        
+    </script>
+</body>
+</html>

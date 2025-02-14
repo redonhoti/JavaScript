@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjetja e vleres maksimale dhe minimale e vleres se vargut</title>
+</head>
+<body>
+    <script>
+        var numer=[3,-7,10,8,15,2];
+
+        //Percaktimi i funksionit per te gjetur vleren maksimale
+        function findMax(array){
+            return Math.max.apply(null,array);
+        }
+
+         //Percaktimi i funksionit per te gjetur vleren minimale
+        function findMin(array){
+            return Math.min.apply(null,array);
+        }
+        document.write(findMax(numer)+"<br>"); //15
+        document.write(findMin(numer));//-7
+    </script>
+</body>
+</html>

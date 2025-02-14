@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renditja e nje grupi objektesh ne JavaScript</title>
+</head>
+<body>
+    <script>
+let persona=[{name: "Drin", mosha:14},{name:"Vlora",mosha:
+    30},{name:"Besa", mosha:21},{name: "Amir",mosha:42},{name:
+        "Burim",mosha: 16}];
+
+        //Rendit sipas moshes
+        persona.sort(function(a,b) {return a.mosha-b.mosha;});
+
+        console.log(persona);
+
+        //Rendit sipas emrit
+        persona.sort(function(a,b) {
+            let x=a.name.toLowerCase(); //injoro shkronjat e medha dhe te vogla
+            let y=b.name.toLowerCase(); //injoro shkronjat e medha dhe te vogla
+            if(x<y) {
+                return -1;
+            }
+            if(x>y) {
+                return 1;
+            }
+            //emrat duhet te jene te njejte
+            return 0;
+        });
+
+        //Kaloni neper te gjitha elementet ne varg
+        for(let i in persona) {
+            //Kaloni neper te gjitha objektet ne varg
+            for(let prop in persona[i]) {
+                document.write(prop +":" +persona[i][prop]+"<br>");
+            }
+            document.write("<hr>");
+        }
+    </script>
+</body>
+</html>
